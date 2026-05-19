@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -60,7 +61,7 @@ fun ToDoScreen(viewModel: TodoViewModel){
                     .testTag("input_field"),
                 singleLine = true
             )
-            Spacer(modifier = Modifier.with(8.dp))
+            Spacer(modifier = Modifier.width(8.dp))
             Button(
                 onClick = {
                     viewModel.addTask(inputText)
@@ -84,7 +85,7 @@ fun ToDoScreen(viewModel: TodoViewModel){
             items(
                 items = viewModel.task,
                 key = {task -> task.id}
-            ){
+            ){ task ->
                 TaskItem(
                     task = task,
                     onDelete = {viewModel.removeTask(taskId = task.id)}
@@ -127,5 +128,5 @@ fun TaskItem(task: Task, onDelete: () ->Unit){
 @Preview(showBackground = true)
 @Composable
 fun ToDoScreenPreview(){
-    ToDoScreen(viewModel)
+    ToDoScreen(viewModel = TodoViewModel())
 }

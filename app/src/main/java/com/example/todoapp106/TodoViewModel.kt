@@ -18,7 +18,7 @@ class TodoViewModel : ViewModel() {
         _tasks.removeAll { it.id == taskId}
     }
 
-    fun getTaksCount(): Int = _tasks.size
+    fun getTaskCount(): Int = _tasks.size
 
     fun containsTask(title:String):Boolean{
         return _tasks.any{it.title == title}
