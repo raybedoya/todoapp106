@@ -30,20 +30,20 @@ class TodoViewModelTest {
 
     @Test
     fun add_Task_withBlankTitle_isIgnored(){
-        viewModel.addTask("Do exercise")
-        assertTrue(viewModel.containsTask("Do Exercise"))
+        viewModel.addTask(" ")
+        assertEquals(0, viewModel.getTaskCount())
     }
 
     @Test
     fun add_Task_withEmptyString_isIgnored(){
         viewModel.addTask("")
-        assertTrue(viewModel.containsTask("Do Exercise"))
+        assertEquals(0, viewModel.getTaskCount())
 
     }
 
     @Test
     fun add_Task_titleIsTrimmed(){
-        viewModel.addTask("  Do  Exercise ")
+        viewModel.addTask("  Do Exercise  ")
         assertTrue(viewModel.containsTask("Do Exercise"))
     }
 

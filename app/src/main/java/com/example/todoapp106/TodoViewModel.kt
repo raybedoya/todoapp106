@@ -32,8 +32,4 @@ class TodoViewModel : ViewModel() {
     fun containsTask(title:String):Boolean{
         return _tasks.any{it.title == title}
     }
-
-    private fun simulateSlowOperation(){
-        Thread.sleep(3000)
-    }
 }
