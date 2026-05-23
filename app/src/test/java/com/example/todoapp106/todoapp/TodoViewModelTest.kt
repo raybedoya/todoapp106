@@ -17,11 +17,17 @@ class TodoViewModelTest {
     }
 
     @Test
-    fun add_Task_withValidTitle_appearanceInList() {
+
+    fun add_Task_withValidTitle_appearsInList(){
+
+        // Arrange - The setUp() already created and empty ViewModel
+        // Act -- Call the function we want to test
         viewModel.addTask("Do exercise")
-        assertEquals(1, viewModel.getTaskCount())
-        assertTrue(viewModel.containsTask("Do Exercise"))
+        // Asser-- Verify the result
+        assertEquals(1,viewModel.getTaskCount())
+        assertTrue(viewModel.containsTask("Do exercise"))
     }
+
     @Test
     fun add_Task_withBlankTitle_isIgnored(){
         viewModel.addTask("Do exercise")

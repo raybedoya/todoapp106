@@ -1,5 +1,6 @@
 package com.example.todoapp106
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,14 +16,10 @@ class TodoViewModel : ViewModel() {
 
     fun addTask(title: String){
         if(title.isNotBlank()){
-            //start new coroutine
-            viewModelScope.launch {
-                withContext(Dispatchers.IO) {
-                    simulateSlowOperation()
+            _tasks.add(Task(id = nextId++, title = title.trim()))
 
-                }
-            }
-            _tasks.add(Task(id = nextId++, title = title.trim()) )
+
+
         }
     }
     fun removeTask(taskId: Int){
@@ -30,6 +27,7 @@ class TodoViewModel : ViewModel() {
     }
 
     fun getTaskCount(): Int = _tasks.size
+
 
     fun containsTask(title:String):Boolean{
         return _tasks.any{it.title == title}

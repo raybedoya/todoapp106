@@ -10,13 +10,13 @@ object AppState {
 
     private var activityContext : Context? = null
 
-    private val leakedActivity = mutableStateListOf<Context>()
+    private val leakedActivities = mutableStateListOf<Context>()
 
     fun initialize(context: Context){
-        activityContext = context.applicationContext
-        leakedActivity.add(context)
+        activityContext = context
+        leakedActivities.add(context)
 
-        Log.d("AppState", "Safe context stored- Application context never leaks")
+        Log.w("AppState", "Context stored — leaked activities: " + leakedActivities.size + ")")
     }
 
 }

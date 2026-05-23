@@ -36,16 +36,16 @@ class TodoScreenTest {
         composeTestRule.onNodeWithText("Buy groceries").assertDoesNotExist()
         //find input field by its test tag
         composeTestRule
-            .onNodeWithTag(testTag = "input_field")
-            .performTextInput(text = "Buy groceries")
+            .onNodeWithTag("input_field")
+            .performTextInput("Buy groceries")
 
         composeTestRule
-            .onNodeWithTag(testTag = "add_button")
+            .onNodeWithTag("add_button")
             .performClick()
 
 
         composeTestRule
-            .onNodeWithText("Buy Groceries")
+            .onNodeWithText("Buy groceries")
             .assertIsDisplayed()
 
     }
