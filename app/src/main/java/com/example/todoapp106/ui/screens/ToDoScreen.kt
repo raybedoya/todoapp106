@@ -67,14 +67,14 @@ fun ToDoScreen(viewModel: TodoViewModel){
                     viewModel.addTask(inputText)
                     inputText = ""
                 },
-                modifier = Modifier.testTag("add button")
+                modifier = Modifier.testTag("add_button")
             ){
                 Text("Add")
             }
         }//end of Row
         Spacer(modifier = Modifier.height(24.dp))
         Text(
-            text = "${viewModel.task.size} task(s)",
+            text = "${viewModel.task.size} tasks(s)",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(bottom = 12.dp)

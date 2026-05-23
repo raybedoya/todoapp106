@@ -2,6 +2,10 @@ package com.example.todoapp106
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TodoViewModel : ViewModel() {
     private val _tasks = mutableStateListOf<Task>()
@@ -11,6 +15,13 @@ class TodoViewModel : ViewModel() {
 
     fun addTask(title: String){
         if(title.isNotBlank()){
+            //start new coroutine
+            viewModelScope.launch {
+                withContext(Dispatchers.IO) {
+                    simulateSlowOperation()
+
+                }
+            }
             _tasks.add(Task(id = nextId++, title = title.trim()) )
         }
     }
@@ -22,5 +33,9 @@ class TodoViewModel : ViewModel() {
 
     fun containsTask(title:String):Boolean{
         return _tasks.any{it.title == title}
+    }
+
+    private fun simulateSlowOperation(){
+        Thread.sleep(3000)
     }
 }
